@@ -1,5 +1,5 @@
 # 数据库相关配置（Spring-data-jpa）
-1. 数据库配置文件
+1. 数据库配置文件(resource/application.properties)
 
 
 # 实体类 entity
