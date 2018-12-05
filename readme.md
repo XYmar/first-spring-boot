@@ -2,7 +2,7 @@
 1. 数据库配置文件
 
 
-# 实体类
+# 实体类 entity
 1. 创建角色实体类
 2. 添加注解
    - @Entity: 用于与数据库对应起来，生成对应的数据库表；
@@ -30,13 +30,32 @@ public class RoleEntity {
    - 根据角色生成权限信息。
    - 规范是 ROLE_...
 
-# service
-1. 创建UserVice
+# 仓储类  repository
+1. 用于定义接口，处理与数据库之间的操作
+2. 继承JpaRepository类，传递的参数
+   - 第一个参数： 传递实体类类型；
+   - 第二个参数： 此实体类的主键类型。
+```
+    @Repository
+    public interface UserRepository extends JpaRepository<UserEntity, String> {
+        UserEntity findAllByUsername(String username);
+    }
+```
+3. 添加注解@Repository
+   
+
+# service  
+1. 作用： 注入仓储类，并调用仓储类中定义的方法，处理数据库逻辑。
+           定义增删改查等方法。
+2. 创建UserVice
    - 实现UserDetailsService接口并实现其中的方法。
-2. 添加注解
+3. 添加注解
    - @Service
    - @Slf4j: 日志相关
    
+#RunApplication
+1. 系统运行时即执行此类的run();
+2. 添加注解
    
 # OAuth2配置文件
 ## AuthorizationServerConfig文件
